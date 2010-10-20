@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @board.name %></h1>
+
+
+<table>
+<% @board.conversations.each do |conversation| %>
+  <tr>
+    <td><%= link_to conversation.title, conversation %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Edit', edit_board_path(@board) %> |
+<%= link_to 'Back', boards_path %>

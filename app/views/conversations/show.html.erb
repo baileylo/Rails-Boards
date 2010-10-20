@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @conversation.title %>
+</p>
+
+<p>
+  <b>Board:</b>
+  <%= @conversation.board.name %>
+</p>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Body</th>
+  </tr>
+
+<% @conversation.comments.each do |comment| %>
+  <tr>
+    <td><%= link_to comment.user.username, comment.user %></td>
+    <td><%= comment.body %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Reply', post_reply_url( :board_id => @conversation.board.id )%> |
+<%= link_to 'Back', @conversation.board %>

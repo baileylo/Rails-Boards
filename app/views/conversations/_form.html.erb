@@ -1,0 +1,31 @@
+<%= form_for(@conversation, :url => board_conversations_path) do |f| %>
+  <% if @conversation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@conversation.errors.count, "error") %> prohibited this conversation from being saved:</h2>
+
+      <ul>
+      <% @conversation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <%= fields_for(@comment) do |cf| %>
+
+    <div clas="field">
+        <%= cf.label :body %><br />
+        <%= cf.text_area(:body, :size => "60x10")%>
+    </div>
+
+  <% end %>  
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
